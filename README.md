@@ -1,2 +1,2 @@
 
-live link: https://sumonali3.github.io/CV/
+live link: https://devsumonali.github.io/CV/
