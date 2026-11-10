@@ -102,7 +102,7 @@ p {
      width: 210px; /* Increased size */
      height: 210px !important; /* Increased size */
      border-radius: 50% !important;
-     object-fit: auto !important;
+     object-fit: cover;
      border: 7px solid #ffffff !important;
      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
      margin-bottom: 20px !important;
@@ -121,6 +121,7 @@ p {
      color: var(--light-bg);
      font-size: 1.1em;
      font-weight: 400;
+     text-align: center;
 }
 
 .sidebar h3 {
@@ -187,6 +188,9 @@ p {
      text-align: left; /* Aligned left */
      font-size: 1em;
 }
+.education-info .education-title {
+     margin-top: 18px;
+}
 .certifications-info li,
 .languages-info li {
      list-style-type: '✓';
@@ -196,6 +200,7 @@ p {
 /* --- Main Content Area --- */
 .main-content {
      padding: 40px;
+     min-width: 0;
 }
 
 .section {
@@ -250,8 +255,7 @@ p {
      padding-left: 25px;
 }
 .strengths-list li::before {
-     font-family: 'Font Awesome 6 Free';
-     content: '\f00c'; /* check icon */
+     content: '\2713';
      font-weight: 900;
      position: absolute;
      left: 0;
@@ -295,6 +299,12 @@ p {
      color: var(--secondary-color);
 }
 
+.project-item a:focus-visible,
+.contact-info a:focus-visible {
+     outline: 2px solid currentColor;
+     outline-offset: 4px;
+}
+
 .soft-skills {
      display: flex;
      flex-wrap: wrap;
@@ -327,5 +337,129 @@ p {
      }
      .sidebar .profile-header h1 {
           font-size: 1.8em;
+     }
+}
+
+/* Keep the CV readable when saved as a PDF from the browser. */
+@page {
+     size: A4;
+     margin: 10mm;
+}
+
+@media print {
+     body {
+          background: #fff;
+          font-family: Arial, sans-serif;
+          font-size: 9pt;
+          line-height: 1.45;
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+     }
+
+     .container {
+          display: grid;
+          grid-template-columns: 59mm minmax(0, 1fr);
+          max-width: none;
+          margin: 0;
+          border-radius: 0;
+          box-shadow: none;
+          overflow: visible;
+     }
+
+     .sidebar,
+     .main-content {
+          padding: 5mm;
+     }
+
+     .sidebar {
+          display: block;
+          font-size: 8.5pt;
+          line-height: 1.35;
+     }
+
+     .profile-image {
+          display: block;
+          width: 32mm;
+          height: 32mm !important;
+          margin: 0 auto 4mm !important;
+          border-width: 3px !important;
+          box-shadow: none !important;
+     }
+
+     .sidebar .profile-header h1 {
+          font-size: 18pt;
+     }
+
+     .sidebar .profile-header .subtitle {
+          font-size: 9pt;
+     }
+
+     .sidebar h3 {
+          margin-top: 3mm;
+          margin-bottom: 2mm;
+          padding-bottom: 1.5mm;
+     }
+
+     .sidebar .profile-header {
+          margin-bottom: 3mm;
+     }
+
+     .contact-info li {
+          margin-bottom: 2mm;
+     }
+
+     .competencies-list h4 {
+          margin-top: 2mm;
+          margin-bottom: 1mm;
+     }
+
+     .competencies-list p {
+          margin-bottom: 1.5mm;
+     }
+
+     h2 {
+          font-size: 12pt;
+          margin-bottom: 3mm;
+          padding-bottom: 2mm;
+          break-after: avoid;
+     }
+
+     h3,
+     h4 {
+          break-after: avoid;
+     }
+
+     p {
+          text-align: left;
+          margin-bottom: 2mm;
+     }
+
+     .section {
+          margin-bottom: 5mm;
+     }
+
+     .experience-item,
+     .project-item {
+          break-inside: avoid;
+     }
+
+     .experience-item,
+     .project-item {
+          margin-bottom: 4mm;
+     }
+
+     .experience-item .job-title {
+          display: block;
+     }
+
+     .tech-stack-box,
+     .soft-skills {
+          gap: 4px;
+     }
+
+     .chip {
+          background: #e7eef4 !important;
+          padding: 3px 6px !important;
+          font-size: 8pt !important;
      }
 }
